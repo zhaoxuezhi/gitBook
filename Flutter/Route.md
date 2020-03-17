@@ -117,7 +117,7 @@ onTap: (){
 
 这里参数传递两种场景：**注册路由的方式** 和 **未注册路由的方式**
 
-1、注册路由场景
+1、参数传递 -- 注册路由场景
 
 ```dart
 Navigator.pushNamed(
@@ -135,7 +135,7 @@ Navigator.of(context).pushNamed(pageB,
                                 );
 ```
 
-2、未注册路由场景
+2、参数传递 -- 未注册路由场景
 
 ```dart
 Navigator.push(
@@ -162,7 +162,7 @@ Navigator.of(context).push(
           );
 ```
 
-2、接收参数 `ModalRoute.of(context).settings.arguments`
+PageB 接收参数 `ModalRoute.of(context).settings.arguments`
 
 ```dart
 ...
@@ -177,13 +177,9 @@ Widget build(BuildContext context) {
 ...
 ```
 
-**未注册路由场景**
+#### 方式三：通过**onGenerateRoute拦截后传值给具体的 widget**
 
-
-
-##### 方式三：通过**onGenerateRoute拦截后传值给具体的 widget**
-
-##### 
+#### 
 
 ##### 
 
