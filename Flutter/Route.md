@@ -63,10 +63,9 @@ Column(
 
 ### 方式一：定义构造方法
 
-1、新路由页面构造函数自定义，接收参数
+新路由页面构造函数自定义，接收参数
 
 ```dart
-
   String data;
 
   // 自定义构造函数，传入 data 数据
@@ -77,37 +76,6 @@ Column(
 
   // 省略其他代码
 }
-```
-
-2、`push` 传参、接收 `pop` 参数回传
-
-```dart
-// push 返回值是 Future 类型，需要 async...await... 的方式调用
-_PushMethod1() async {
-    // result 接收页面关闭时回传的参数
-    var result = await Navigator.of(context).push(
-      MaterialPageRoute(
-        builder:(context){
-         // 构造函数传参
-          return MyPage('push Params');
-        }
-      )
-    );
-    print('result = $result');
-  }
-```
-
-3、`pop` 时参数回传
-
-```dart
-......
-
-onTap: (){
-    // pop 函数第二个参数是需要回传的值
-    Navigator.pop(context,[{'pageName':'MyPage'}]);
-},
-
-......
 ```
 
 总结：需要事先定义好构造函数，不够灵活
@@ -178,7 +146,7 @@ Widget build(BuildContext context) {
 
 总结：这种方法无法统一对路由做处理，例如埋点场景需要 `hook`
 
-#### 方式三：通过**`onGenerateRoute`拦截后传值给具体的 widget**
+#### 方式三：通过`onGenerateRoute`**拦截后传值给具体的 widget**
 
 1、PageB 中定义需要接收的参数
 
@@ -204,7 +172,7 @@ Navigator.pushNamed(
           );
 ```
 
-3、`onGenerateRoute` 拦截，将真正要传的参数传入`pageB` 
+3、`onGenerateRoute` 拦截，将真正要传的参数传入`pageB`
 
 ```dart
 MaterialApp(
