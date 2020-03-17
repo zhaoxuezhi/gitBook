@@ -67,15 +67,15 @@ Column(
 
 ```dart
 class MyPage extends StatelessWidget {
-  
+
   String data;
-  
+
   // 自定义构造函数，传入 data 数据
   MyPage(this.data);
-  
+
   // 默认构造方法
   // const MyPage({Key key}) : super(key: key);  
-  
+
   // 省略其他代码
 }
 ```
@@ -111,7 +111,13 @@ onTap: (){
 ......
 ```
 
-##### 方式二：将参数传递给指定路由
+总结：需要事先定义好构造函数，不够灵活
+
+##### 方式二：通过路由将参数传递给指定页面
+
+-- 注册路由场景
+
+-- 未注册路由场景
 
 ##### 方式三：通过**onGenerateRoute拦截后传值给具体的 widget**
 
