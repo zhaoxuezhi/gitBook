@@ -63,10 +63,9 @@ Column(
 
 ### 方式一：定义构造方法
 
-#### 1、新路由页面构造函数自定义，接收参数
+1、新路由页面构造函数自定义，接收参数
 
 ```dart
-class MyPage extends StatelessWidget {
 
   String data;
 
@@ -177,11 +176,110 @@ Widget build(BuildContext context) {
 ...
 ```
 
-#### 方式三：通过**onGenerateRoute拦截后传值给具体的 widget**
+总结：这种方法无法统一对路由做处理，例如埋点场景需要 `hook`
 
-#### 
+#### 方式三：通过**`onGenerateRoute`拦截后传值给具体的 widget**
 
-##### 
+1、PageB 中定义需要接收的参数
+
+```dart
+class PageC extends StatelessWidget {
+  /*当前页面的路由别名*/
+  static const routeName = '/pageC';
+
+  /*需要传入的参数*/
+  String name;
+
+  PageC({this.name});
+}
+```
+
+2、`push` 传参
+
+```dart
+Navigator.pushNamed(
+            context,
+            PageB.routeName,   // PageB 页面定义的路由别名
+            arguments: People("喻志强", 23),  // 这里是要传入 pageB 页面的参数，但是不一定是 pageB 中定义的
+          );
+```
+
+3、`onGenerateRoute` 拦截，将真正要传的参数传入`pageB` 
+
+```dart
+MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      routes: RoutePath,
+      home: MyHomePage(title: '主页面'),
+      // 路由拦截
+      onGenerateRoute: (settings) {
+        /*如果路由名称是PageB.routeName 则进行处理*/
+        if (settings.name == PageB.routeName) {
+          People p = settings.arguments;
+
+          return MaterialPageRoute(
+              builder: (context) => PageCHome(
+                    pageContext: context,
+                    name: p.name,
+                  ));
+        }
+      },
+    );
+```
+
+总结：这种方式
+
+#### `push` 接收 `pop` 参数回传
+
+1、`push` 接收 `pop` 回传的参数
+
+```dart
+// push 返回值是 Future 类型，需要 async...await... 的方式调用
+_PushMethod1() async {
+    // result 接收页面关闭时回传的参数
+    var result = await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder:(context){
+         // 构造函数传参
+          return MyPage('push Params');
+        }
+      )
+    );
+    print('result = $result');
+  }
+```
+
+或者：
+
+```dart
+ _PushMethod2(){
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder:(context){
+          return MyPage('push Params');
+        }
+      )
+    ).then((result){
+          print('result = $result');
+    });
+  }
+```
+
+2、`pop` 时参数回传
+
+```dart
+...
+
+onTap: (){
+    // pop 函数第二个参数是需要回传的值
+    Navigator.pop(context,[{'pageName':'MyPage'}]);
+},
+
+...
+```
 
 
 
