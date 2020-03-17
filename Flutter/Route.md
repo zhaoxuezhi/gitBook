@@ -59,11 +59,59 @@ Column(
   关闭页面，`result` 为页面关闭时返回给上一个页面的数据 
 * `Navigator.replace`，`Navigator.popUntil` ...
 
-#### 三种路由传值方式
+#### 三种路由传值方式 {#sendparams}
 
 ##### 方式一：定义构造方法
 
-##### 方式二：将参数传递给制定路由
+1、新路由页面构造函数自定义，接收参数
+
+```dart
+class MyPage extends StatelessWidget {
+  
+  String data;
+  
+  // 自定义构造函数，传入 data 数据
+  MyPage(this.data);
+  
+  // 默认构造方法
+  // const MyPage({Key key}) : super(key: key);  
+  
+  // 省略其他代码
+}
+```
+
+2、`push` 传参、接收 `pop` 参数回传
+
+```dart
+// push 返回值是 Future 类型，需要 async...await... 的方式调用
+_PushMethod1() async {
+    // result 接收页面关闭时回传的参数
+    var result = await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder:(context){
+         // 构造函数传参
+          return MyPage('push Params');
+        }
+      )
+    );
+    print('result = $result');
+  }
+```
+
+3、`pop` 时参数回传
+
+```dart
+......
+
+onTap: (){
+    // pop 函数第二个参数是需要回传的值
+    Navigator.pop(context,[{'pageName':'MyPage'}]);
+},
+
+......
+```
+
+##### 方式二：将参数传递给指定路由
 
 ##### 方式三：通过**onGenerateRoute拦截后传值给具体的 widget**
 
