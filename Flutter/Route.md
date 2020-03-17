@@ -55,11 +55,11 @@ Column(
 
 * `Future push(BulidContext context, Route route)`  
    打开页面，返回值 `Future` 接收新路由关闭时的返回数据；
-* `bool pop(BuildContext context, [result]) `
+* `bool pop(BuildContext context, [result])`
   关闭页面，`result` 为页面关闭时返回给上一个页面的数据 
 * `Navigator.replace`，`Navigator.popUntil` ...
 
-#### 路由传值
+#### 三种路由传值方式
 
 ##### 方式一：定义构造方法
 
@@ -70,20 +70,6 @@ Column(
 ##### 
 
 ##### 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
