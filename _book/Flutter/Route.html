@@ -257,9 +257,8 @@
 </ul>
 <h3 id="&#x4E09;&#x79CD;&#x8DEF;&#x7531;&#x4F20;&#x503C;&#x65B9;&#x5F0F;">&#x4E09;&#x79CD;&#x8DEF;&#x7531;&#x4F20;&#x503C;&#x65B9;&#x5F0F;</h3>
 <h3 id="&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;&#x5B9A;&#x4E49;&#x6784;&#x9020;&#x65B9;&#x6CD5;">&#x65B9;&#x5F0F;&#x4E00;&#xFF1A;&#x5B9A;&#x4E49;&#x6784;&#x9020;&#x65B9;&#x6CD5;</h3>
-<h4 id="1&#x3001;&#x65B0;&#x8DEF;&#x7531;&#x9875;&#x9762;&#x6784;&#x9020;&#x51FD;&#x6570;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x63A5;&#x6536;&#x53C2;&#x6570;">1&#x3001;&#x65B0;&#x8DEF;&#x7531;&#x9875;&#x9762;&#x6784;&#x9020;&#x51FD;&#x6570;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x63A5;&#x6536;&#x53C2;&#x6570;</h4>
-<pre><code class="lang-dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyPage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
-
+<p>1&#x3001;&#x65B0;&#x8DEF;&#x7531;&#x9875;&#x9762;&#x6784;&#x9020;&#x51FD;&#x6570;&#x81EA;&#x5B9A;&#x4E49;&#xFF0C;&#x63A5;&#x6536;&#x53C2;&#x6570;</p>
+<pre><code class="lang-dart">
   <span class="hljs-built_in">String</span> data;
 
   <span class="hljs-comment">// &#x81EA;&#x5B9A;&#x4E49;&#x6784;&#x9020;&#x51FD;&#x6570;&#xFF0C;&#x4F20;&#x5165; data &#x6570;&#x636E;</span>
@@ -344,9 +343,89 @@ Widget build(BuildContext context) {
   }
 ...
 </code></pre>
-<h4 id="&#x65B9;&#x5F0F;&#x4E09;&#xFF1A;&#x901A;&#x8FC7;ongenerateroute&#x62E6;&#x622A;&#x540E;&#x4F20;&#x503C;&#x7ED9;&#x5177;&#x4F53;&#x7684;-widget">&#x65B9;&#x5F0F;&#x4E09;&#xFF1A;&#x901A;&#x8FC7;<strong>onGenerateRoute&#x62E6;&#x622A;&#x540E;&#x4F20;&#x503C;&#x7ED9;&#x5177;&#x4F53;&#x7684; widget</strong></h4>
-<h4 id=""> </h4>
-<h5 id=""> </h5>
+<p>&#x603B;&#x7ED3;&#xFF1A;&#x8FD9;&#x79CD;&#x65B9;&#x6CD5;&#x65E0;&#x6CD5;&#x7EDF;&#x4E00;&#x5BF9;&#x8DEF;&#x7531;&#x505A;&#x5904;&#x7406;&#xFF0C;&#x4F8B;&#x5982;&#x57CB;&#x70B9;&#x573A;&#x666F;&#x9700;&#x8981; <code>hook</code></p>
+<h4 id="&#x65B9;&#x5F0F;&#x4E09;&#xFF1A;&#x901A;&#x8FC7;ongenerateroute&#x62E6;&#x622A;&#x540E;&#x4F20;&#x503C;&#x7ED9;&#x5177;&#x4F53;&#x7684;-widget">&#x65B9;&#x5F0F;&#x4E09;&#xFF1A;&#x901A;&#x8FC7;<strong><code>onGenerateRoute</code>&#x62E6;&#x622A;&#x540E;&#x4F20;&#x503C;&#x7ED9;&#x5177;&#x4F53;&#x7684; widget</strong></h4>
+<p>1&#x3001;PageB &#x4E2D;&#x5B9A;&#x4E49;&#x9700;&#x8981;&#x63A5;&#x6536;&#x7684;&#x53C2;&#x6570;</p>
+<pre><code class="lang-dart"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PageC</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">StatelessWidget</span> </span>{
+  <span class="hljs-comment">/*&#x5F53;&#x524D;&#x9875;&#x9762;&#x7684;&#x8DEF;&#x7531;&#x522B;&#x540D;*/</span>
+  <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> routeName = <span class="hljs-string">&apos;/pageC&apos;</span>;
+
+  <span class="hljs-comment">/*&#x9700;&#x8981;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;*/</span>
+  <span class="hljs-built_in">String</span> name;
+
+  PageC({<span class="hljs-keyword">this</span>.name});
+}
+</code></pre>
+<p>2&#x3001;<code>push</code> &#x4F20;&#x53C2;</p>
+<pre><code class="lang-dart">Navigator.pushNamed(
+            context,
+            PageB.routeName,   <span class="hljs-comment">// PageB &#x9875;&#x9762;&#x5B9A;&#x4E49;&#x7684;&#x8DEF;&#x7531;&#x522B;&#x540D;</span>
+            arguments: People(<span class="hljs-string">&quot;&#x55BB;&#x5FD7;&#x5F3A;&quot;</span>, <span class="hljs-number">23</span>),  <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x662F;&#x8981;&#x4F20;&#x5165; pageB &#x9875;&#x9762;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x4E00;&#x5B9A;&#x662F; pageB &#x4E2D;&#x5B9A;&#x4E49;&#x7684;</span>
+          );
+</code></pre>
+<p>3&#x3001;<code>onGenerateRoute</code> &#x62E6;&#x622A;&#xFF0C;&#x5C06;&#x771F;&#x6B63;&#x8981;&#x4F20;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x5165;<code>pageB</code> </p>
+<pre><code class="lang-dart">MaterialApp(
+      title: <span class="hljs-string">&apos;Flutter Demo&apos;</span>,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      routes: RoutePath,
+      home: MyHomePage(title: <span class="hljs-string">&apos;&#x4E3B;&#x9875;&#x9762;&apos;</span>),
+      <span class="hljs-comment">// &#x8DEF;&#x7531;&#x62E6;&#x622A;</span>
+      onGenerateRoute: (settings) {
+        <span class="hljs-comment">/*&#x5982;&#x679C;&#x8DEF;&#x7531;&#x540D;&#x79F0;&#x662F;PageB.routeName &#x5219;&#x8FDB;&#x884C;&#x5904;&#x7406;*/</span>
+        <span class="hljs-keyword">if</span> (settings.name == PageB.routeName) {
+          People p = settings.arguments;
+
+          <span class="hljs-keyword">return</span> MaterialPageRoute(
+              builder: (context) =&gt; PageCHome(
+                    pageContext: context,
+                    name: p.name,
+                  ));
+        }
+      },
+    );
+</code></pre>
+<p>&#x603B;&#x7ED3;&#xFF1A;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;</p>
+<h4 id="push-&#x63A5;&#x6536;-pop-&#x53C2;&#x6570;&#x56DE;&#x4F20;"><code>push</code> &#x63A5;&#x6536; <code>pop</code> &#x53C2;&#x6570;&#x56DE;&#x4F20;</h4>
+<p>1&#x3001;<code>push</code> &#x63A5;&#x6536; <code>pop</code> &#x56DE;&#x4F20;&#x7684;&#x53C2;&#x6570;</p>
+<pre><code class="lang-dart"><span class="hljs-comment">// push &#x8FD4;&#x56DE;&#x503C;&#x662F; Future &#x7C7B;&#x578B;&#xFF0C;&#x9700;&#x8981; async...await... &#x7684;&#x65B9;&#x5F0F;&#x8C03;&#x7528;</span>
+_PushMethod1() <span class="hljs-keyword">async</span> {
+    <span class="hljs-comment">// result &#x63A5;&#x6536;&#x9875;&#x9762;&#x5173;&#x95ED;&#x65F6;&#x56DE;&#x4F20;&#x7684;&#x53C2;&#x6570;</span>
+    <span class="hljs-keyword">var</span> result = <span class="hljs-keyword">await</span> Navigator.of(context).push(
+      MaterialPageRoute(
+        builder:(context){
+         <span class="hljs-comment">// &#x6784;&#x9020;&#x51FD;&#x6570;&#x4F20;&#x53C2;</span>
+          <span class="hljs-keyword">return</span> MyPage(<span class="hljs-string">&apos;push Params&apos;</span>);
+        }
+      )
+    );
+    <span class="hljs-built_in">print</span>(<span class="hljs-string">&apos;result = $result&apos;</span>);
+  }
+</code></pre>
+<p>&#x6216;&#x8005;&#xFF1A;</p>
+<pre><code class="lang-dart"> _PushMethod2(){
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder:(context){
+          <span class="hljs-keyword">return</span> MyPage(<span class="hljs-string">&apos;push Params&apos;</span>);
+        }
+      )
+    ).then((result){
+          <span class="hljs-built_in">print</span>(<span class="hljs-string">&apos;result = $result&apos;</span>);
+    });
+  }
+</code></pre>
+<p>2&#x3001;<code>pop</code> &#x65F6;&#x53C2;&#x6570;&#x56DE;&#x4F20;</p>
+<pre><code class="lang-dart">...
+
+onTap: (){
+    <span class="hljs-comment">// pop &#x51FD;&#x6570;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x9700;&#x8981;&#x56DE;&#x4F20;&#x7684;&#x503C;</span>
+    Navigator.pop(context,[{<span class="hljs-string">&apos;pageName&apos;</span>:<span class="hljs-string">&apos;MyPage&apos;</span>}]);
+},
+
+...
+</code></pre>
 
                                 
                                 </section>
@@ -390,7 +469,7 @@ Widget build(BuildContext context) {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"路由","level":"1.4","depth":1,"next":{"title":"Reactjs","level":"2.1","depth":1,"path":"Reactjs/README.md","ref":"Reactjs/README.md","articles":[]},"previous":{"title":"Column","level":"1.3","depth":1,"path":"Flutter/Column.md","ref":"Flutter/Column.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Flutter/Route.md","mtime":"2020-03-17T13:55:54.029Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T05:44:57.105Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"路由","level":"1.4","depth":1,"next":{"title":"Reactjs","level":"2.1","depth":1,"path":"Reactjs/README.md","ref":"Reactjs/README.md","articles":[]},"previous":{"title":"Column","level":"1.3","depth":1,"path":"Flutter/Column.md","ref":"Flutter/Column.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Flutter/Route.md","mtime":"2020-03-17T14:34:34.170Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-17T05:44:57.105Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
