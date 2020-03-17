@@ -59,11 +59,11 @@ Column(
   关闭页面，`result` 为页面关闭时返回给上一个页面的数据 
 * `Navigator.replace`，`Navigator.popUntil` ...
 
-#### 三种路由传值方式 {#sendparams}
+### 三种路由传值方式
 
-##### 方式一：定义构造方法
+### 方式一：定义构造方法
 
-1、新路由页面构造函数自定义，接收参数
+#### 1、新路由页面构造函数自定义，接收参数
 
 ```dart
 class MyPage extends StatelessWidget {
@@ -113,11 +113,73 @@ onTap: (){
 
 总结：需要事先定义好构造函数，不够灵活
 
-##### 方式二：通过路由将参数传递给指定页面
+#### 方式二：通过路由将参数传递给指定页面
 
--- 注册路由场景
+这里参数传递两种场景：**注册路由的方式** 和 **未注册路由的方式**
 
--- 未注册路由场景
+1、注册路由场景
+
+```dart
+Navigator.pushNamed(
+            context,
+            pageB,
+            arguments: People("yzq", 25),//需要传递给 PageB 的数据 model
+          );
+```
+
+或者：
+
+```dart
+Navigator.of(context).pushNamed(pageB, 
+                                arguments: People("yzq", 25) // 需要传递给 PageB 的数据 model
+                                );
+```
+
+2、未注册路由场景
+
+```dart
+Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PageB(),
+              settings: RouteSettings(
+                arguments: People("yuzhiqiang", 26), // 需要传递给 PageB 的数据 model
+              ),
+            ),
+          );
+```
+
+或者：
+
+```dart
+Navigator.of(context).push(
+            MaterialPageRoute(
+                builder: (context) => PageB(),
+                settings: RouteSettings(
+                    arguments: People("yuzhiqiang", 26), // 需要传递给 PageB 的数据 model
+                )
+            ),
+          );
+```
+
+2、接收参数 `ModalRoute.of(context).settings.arguments`
+
+```dart
+...
+Widget build(BuildContext context) {
+    /*获取传递过来的参数*/
+    People _people = ModalRoute.of(context).settings.arguments;
+
+    return Scaffold(
+      xxx
+    );
+  }
+...
+```
+
+**未注册路由场景**
+
+
 
 ##### 方式三：通过**onGenerateRoute拦截后传值给具体的 widget**
 
